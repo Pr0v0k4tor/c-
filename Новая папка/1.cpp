@@ -1,79 +1,49 @@
-﻿/*#include <iostream>
-using namespace std;
-
-int main() {
-    setlocale(LC_ALL, "ru");
-    int a, b, c;
-
-    cout << "Введите три числа: ";
-    cin >> a >> b >> c;
-
-    int max = a;
-
-    if (b > max) {
-        max = b;
-    }
-    if (c > max) {
-        max = c;
-    }
-
-    cout << "Наибольшее число: " << max << endl;
-
-    return 0;
-}
-*/
-/*
 #include <iostream>
+#include <time.h>
+#include <stdlib.h>
 using namespace std;
 
-int main() {
-    setlocale(LC_ALL, "ru");
-    int n;
+template <class T> //Функция пузырьковой сортировки
+void bubbleSort(T a[], long size)
+{
+	long i, j;
+	T x;
+	for ( i = 0; i < size; i++) //Проходит по всему массиву
+	{
+		for (j= size - 1 ; j > i; j--) //Перебор чисел справа налево
+		{
+			if (a[j - 1] > a[j]) { //Если число слева > числа справа
+				x = a[j - 1];      
+				a[j - 1] = a[j];   //Меняем текущий порядок
+				a[j] = x;
 
-    cout << "Введите размер таблицы: ";
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-        for (int j = 1; j <= n; j++) {
-            cout << i * j << " ";
-        }
-        cout << endl;
-    }
-
-    return 0;
+			}
+		}
+	}
 }
-*/
-/*
-#include <iostream>
-using namespace std;
 
-int main() {
+int main(){
     setlocale(LC_ALL, "ru");
-    int x;
-    cout << "Введите число: ";
-    cin >> x;
+    srand(time(NULL));
+	
+    const long size = 10;
+	
+    int ar[size];
 
-    if (x % 15 == 0) cout << "FizzBuzz";
-    else if (x % 3 == 0) cout << "Fizz";
-    else if (x % 5 == 0) cout << "Buzz";
-    else cout << x;
+	for (int i = 0; i < size; i++) { //Создание массива
+		ar[i] = rand() % 10;
+		cout << ar[i] << "\t";
+	}
+	cout << "\n\n";
 
-    return 0;
-}
-*/
-#include <iostream>
-using namespace std;
+    bubbleSort(ar, size); //Функция сортировки
 
-int main() {
-    setlocale(LC_ALL, "ru");
-    int n, f = 1;
-    cout << "Введите число: ";
-    cin >> n;
-
-    for (int i = 1; i <= n; i++) {
-        f = f * i;
-    }
-
-    cout << f;
+	for (int i = 0; i < size; i++) { //Создание отсортированного массива
+		cout << ar[i] << "\t";
+	}
+	cout << "\n\n";
+    
+    
+    
     return 0;
 }
