@@ -3,47 +3,112 @@
 #include <stdlib.h>
 using namespace std;
 
-template <class T> //Функция пузырьковой сортировки
-void bubbleSort(T a[], long size)
-{
-	long i, j;
-	T x;
-	for ( i = 0; i < size; i++) //Проходит по всему массиву
-	{
-		for (j= size - 1 ; j > i; j--) //Перебор чисел справа налево
-		{
-			if (a[j - 1] > a[j]) { //Если число слева > числа справа
-				x = a[j - 1];      
-				a[j - 1] = a[j];   //Меняем текущий порядок
-				a[j] = x;
+void InitMatrix(int a[][5]){
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            a[i][j] = rand() % 10;
+        }
+    }
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            cout << a[i][j] << " ";
+        }
+        cout << "\n";
+    }
 
-			}
-		}
-	}
+    int min = a[0][0];
+    int max = a[0][0];
+
+    for(int i = 0; i < 5; i++){
+        if(a[i][i] < min){
+            min = a[i][i];
+        }
+        if(a[i][i] > max){
+            max = a[i][i];
+        }
+    }
+    cout << "Min: " << min << "\n" << "Max: " << max;
+    cout << endl;
+}
+
+
+void InitMatrix(double a[][5]){
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            a[i][j] = rand() % 10 / 10.0; 
+        }
+    }
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            cout << a[i][j] << " ";
+        }
+        cout << "\n";
+    }
+
+    double min = a[0][0];
+    double max = a[0][0];
+
+    for(int i = 0; i < 5; i++){
+        if(a[i][i] < min){
+            min = a[i][i];
+        }
+        if(a[i][i] > max){
+            max = a[i][i];
+        }
+    }
+    cout << "Min: " << min << "\n" << "Max: " << max;
+    cout << endl;
+}
+
+void InitMatrix(char a[][5]){
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            a[i][j] = 'A' + rand() % 26; 
+        }
+    }
+    for(int i = 0; i < 5; i++){
+        for(int j = 0; j < 5; j++){
+            cout << a[i][j] << " ";
+        }
+        cout << "\n";
+    }
+
+    char min = a[0][0];
+    char max = a[0][0];
+
+    for(int i = 0; i < 5; i++){
+        if(a[i][i] < min){
+            min = a[i][i];
+        }
+        if(a[i][i] > max){
+            max = a[i][i];
+        }
+    }
+    cout << "Min: " << min << "\n" << "Max: " << max;
+    cout << endl;
 }
 
 int main(){
     setlocale(LC_ALL, "ru");
     srand(time(NULL));
-	
-    const long size = 10;
-	
-    int ar[size];
 
-	for (int i = 0; i < size; i++) { //Создание массива
-		ar[i] = rand() % 10;
-		cout << ar[i] << "\t";
-	}
-	cout << "\n\n";
+    const int row_1 = 5;
+    const int col_1 = 5;
+    int array_1[row_1][col_1];
 
-    bubbleSort(ar, size); //Функция сортировки
+    const int row_2 = 5;
+    const int col_2 = 5;
+    double array_2[row_2][col_2];
 
-	for (int i = 0; i < size; i++) { //Создание отсортированного массива
-		cout << ar[i] << "\t";
-	}
-	cout << "\n\n";
-    
-    
+    const int row_3 = 5;
+    const int col_3 = 5;
+    char array_3[row_3][col_3];
+
+    InitMatrix(array_1);
+    cout << endl;
+    InitMatrix(array_2);
+    cout << endl;
+    InitMatrix(array_3);
     
     return 0;
 }
